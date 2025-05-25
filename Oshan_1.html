@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Thompson - Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
+                            '100%': { boxShadow: '0 0 30px rgba(99, 102, 241, 0.6)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glassmorphism {
+            background: rgba(17, 25, 40, 0.75);
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tech-card:hover {
+            transform: translateY(-8px);
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+        .floating-shapes::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            opacity: 0.1;
+            top: 10%;
+            right: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+        .floating-shapes::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            border-radius: 50%;
+            opacity: 0.1;
+            bottom: 20%;
+            left: 15%;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glassmorphism">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold gradient-text">AT</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-indigo-400 transition-colors duration-300">Home</a>
+                    <a href="#about" class="hover:text-indigo-400 transition-colors duration-300">About</a>
+                    <a href="#projects" class="hover:text-indigo-400 transition-colors duration-300">Projects</a>
+                    <a href="#skills" class="hover:text-indigo-400 transition-colors duration-300">Skills</a>
+                    <a href="#contact" class="hover:text-indigo-400 transition-colors duration-300">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen relative flex items-center justify-center floating-shapes">
+        <div class="text-center animate-fade-in">
+            <div class="mb-8">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face&auto=format" 
+                     alt="Profile" 
+                     class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-indigo-500 animate-glow">
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                Hi, I'm <span class="gradient-text">Alex Thompson</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-up">
+                Full-Stack Software Engineer & Problem Solver
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+                <a href="#projects" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+                    View My Work
+                </a>
+                <a href="#contact" class="border border-indigo-500 hover:bg-indigo-500 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-semibold mb-6">Passionate about crafting digital experiences</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        I'm a dedicated software engineer with 5+ years of experience building scalable web applications 
+                        and solving complex technical challenges. I specialize in full-stack development with a passion 
+                        for clean, efficient code and user-centric design.
+                    </p>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
+                        or mentoring junior developers. I believe in continuous learning and staying at the forefront of 
+                        technology trends.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-indigo-400">50+</div>
+                            <div class="text-sm text-gray-400">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-indigo-400">5+</div>
+                            <div class="text-sm text-gray-400">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-indigo-400">20+</div>
+                            <div class="text-sm text-gray-400">Happy Clients</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glassmorphism rounded-2xl p-8 animate-float">
+                    <h4 class="text-xl font-semibold mb-4">Current Focus</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></span>
+                            Cloud Architecture & DevOps
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></span>
+                            Machine Learning Integration
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></span>
+                            Microservices Architecture
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></span>
+                            Performance Optimization
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-gray-800/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Technical Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">⚛️</div>
+                    <h3 class="font-semibold">React</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">🟢</div>
+                    <h3 class="font-semibold">Node.js</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">🐍</div>
+                    <h3 class="font-semibold">Python</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">☁️</div>
+                    <h3 class="font-semibold">AWS</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">🗄️</div>
+                    <h3 class="font-semibold">MongoDB</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">🐳</div>
+                    <h3 class="font-semibold">Docker</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">⚡</div>
+                    <h3 class="font-semibold">Next.js</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">🔧</div>
+                    <h3 class="font-semibold">GraphQL</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">🎨</div>
+                    <h3 class="font-semibold">Tailwind</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">📱</div>
+                    <h3 class="font-semibold">React Native</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">🛠️</div>
+                    <h3 class="font-semibold">TypeScript</h3>
+                </div>
+                <div class="glassmorphism rounded-xl p-6 text-center tech-card">
+                    <div class="text-4xl mb-3">🚀</div>
+                    <h3 class="font-semibold">Kubernetes</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glassmorphism rounded-2xl overflow-hidden project-card">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <div class="text-6xl">🛍️</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">E-Commerce Platform</h3>
+                        <p class="text-gray-300 mb-4">Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include real-time inventory, payment processing, and admin dashboard.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-600 px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-indigo-600 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span class="bg-indigo-600 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors">Live Demo</a>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl overflow-hidden project-card">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                        <div class="text-6xl">📊</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Analytics Dashboard</h3>
+                        <p class="text-gray-300 mb-4">Real-time analytics dashboard with interactive charts, data visualization, and custom reporting features built with React and D3.js.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-600 px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-green-600 px-3 py-1 rounded-full text-sm">D3.js</span>
+                            <span class="bg-green-600 px-3 py-1 rounded-full text-sm">Python</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-green-400 hover:text-green-300 transition-colors">Live Demo</a>
+                            <a href="#" class="text-green-400 hover:text-green-300 transition-colors">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl overflow-hidden project-card">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                        <div class="text-6xl">🤖</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">AI Chat Application</h3>
+                        <p class="text-gray-300 mb-4">Intelligent chat application with natural language processing, real-time messaging, and machine learning-powered responses.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-orange-600 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-orange-600 px-3 py-1 rounded-full text-sm">TensorFlow</span>
+                            <span class="bg-orange-600 px-3 py-1 rounded-full text-sm">WebSocket</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-orange-400 hover:text-orange-300 transition-colors">Live Demo</a>
+                            <a href="#" class="text-orange-400 hover:text-orange-300 transition-colors">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-800/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">Let's Work Together</h2>
+            <p class="text-xl text-gray-300 mb-12">
+                Ready to bring your ideas to life? I'm always open to discussing new opportunities and interesting projects.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="glassmorphism rounded-xl p-6">
+                    <div class="text-3xl mb-4">📧</div>
+                    <h3 class="font-semibold mb-2">Email</h3>
+                    <p class="text-gray-300">alex@example.com</p>
+                </div>
+                <div class="glassmorphism rounded-xl p-6">
+                    <div class="text-3xl mb-4">💼</div>
+                    <h3 class="font-semibold mb-2">LinkedIn</h3>
+                    <p class="text-gray-300">@alexthompson</p>
+                </div>
+                <div class="glassmorphism rounded-xl p-6">
+                    <div class="text-3xl mb-4">🐙</div>
+                    <h3 class="font-semibold mb-2">GitHub</h3>
+                    <p class="text-gray-300">@alexthompson</p>
+                </div>
+            </div>
+            <div class="glassmorphism rounded-2xl p-8 max-w-2xl mx-auto">
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Your Name" class="bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors">
+                        <input type="email" placeholder="Your Email" class="bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors">
+                    </div>
+                    <input type="text" placeholder="Subject" class="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors">
+                    <textarea placeholder="Your Message" rows="5" class="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors resize-none"></textarea>
+                    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 py-3 rounded-lg transition-all duration-300 transform hover:scale-[1.02]">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400">© 2025 Alex Thompson. Built with passion and lots of coffee ☕</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden glassmorphism mt-4 rounded-lg p-4';
+        mobileMenu.innerHTML = `
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="hover:text-indigo-400 transition-colors duration-300">Home</a>
+                <a href="#about" class="hover:text-indigo-400 transition-colors duration-300">About</a>
+                <a href="#projects" class="hover:text-indigo-400 transition-colors duration-300">Projects</a>
+                <a href="#skills" class="hover:text-indigo-400 transition-colors duration-300">Skills</a>
+                <a href="#contact" class="hover:text-indigo-400 transition-colors duration-300">Contact</a>
+            </div>
+        `;
+        mobileMenu.style.display = 'none';
+
+        mobileMenuBtn.parentNode.parentNode.appendChild(mobileMenu);
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.style.display = mobileMenu.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.tech-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Add parallax effect to floating shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.floating-shapes');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
