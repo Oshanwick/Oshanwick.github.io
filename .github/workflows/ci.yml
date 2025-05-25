@@ -1,0 +1,47 @@
+# .github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out your repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Install the .NET 8 SDK
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      # 3. Cache NuGet dependencies for faster subsequent runs
+      - name: Cache NuGet packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      # 4. Restore your project’s dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # 5. Build the project in Release mode
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      # 6. Run your tests
+      - name: Test
+        run: dotnet test --no-build --configuration Release --verbosity normal
+
